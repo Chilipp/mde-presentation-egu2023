@@ -1,0 +1,42 @@
+% !TeX root = ../mde-presentation.tex
+
+\section{Maintenance} \label{sec:maintenance}
+
+\begin{frame}[t]{Maintenance}
+
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{block}{Templating, Packaging and Containerization}
+                We plan to systemize and guarantee maintenance through a
+                sophisticated templating mechanism for generating and updating
+                plugins and docker-based deployments with
+                \href{https://github.com/cruft/cruft}{cruft} and
+                \href{https://github.com/cookiecutter/cookiecutter}{cookiecutter}.
+
+                Standardized and flexible deployments will be implemented with
+                helm charts for kubernetes and openshift.
+            \end{block}
+
+            \vspace{1em}
+
+            \href{https://de-rse.org}{
+                \includegraphics[width=0.5\textwidth]{figures/BetterSoftwareBetterResearchImage.jpg}
+            }
+
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \href{https://github.com/cruft/cruft}{
+                \includegraphics[width=0.45\textwidth]{figures/cruft.png}
+            }
+            \href{https://codebase.helmholtz.cloud/model-data-explorer/}{
+                \includegraphics[width=0.45\textwidth]{figures/gitlab-logo.pdf}
+            } \\
+            \vspace{1em}
+            \includegraphics[width=0.45\textwidth]{figures/Kubernetes_logo.svg.png}
+            \includegraphics[width=0.45\textwidth]{figures/openshift.png} \\
+            \vspace{1em}
+            \includegraphics[width=0.45\textwidth]{figures/docker-logo.png} \\
+        \end{column}
+    \end{columns}
+
+\end{frame}

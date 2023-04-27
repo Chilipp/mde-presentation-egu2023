@@ -1,0 +1,319 @@
+\documentclass[17pt, table, compress]{beamer}
+
+%%%%%%%%%%%%  LATEX - BEAMERCLASS PRESENTATION DRAFT FOR ARVE %%%%%%%%%%%%%%%%%%%%
+%
+% We recommend to use the example page as a template for your presentation. A mini-
+% mum working example for every frame is given by:
+%
+% \begin{frame}[t]{title}
+% \vspace{0.7cm}
+%	 Content
+% \end{frame}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%   PLEASE DO NOT CHANGE THIS PART   %%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme{miniframes}
+\useinnertheme{rectangles}
+\usepackage[utf8x]{inputenc}
+\usepackage[english]{babel}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{helvet}
+\usepackage[overlay, absolute]{textpos}
+\usepackage[percent]{overpic}
+\usepackage{setspace}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{color}
+\usepackage{framed}
+\usepackage{cleveref}
+\usepackage[fit,breakall]{truncate}
+\usepackage[authoryear, round]{natbib}
+\geometry{papersize={25.4cm,19.05cm}}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}{\insertcaption}
+\definecolor{hereongreen}{RGB}{0, 145, 160}
+\definecolor{hereonblue}{RGB}{0, 120, 210}
+\definecolor{hereondarkblue}{RGB}{0, 70, 125}
+\definecolor{hereondarkblueshaded}{RGB}{150, 180, 200}
+\definecolor{hereonred}{RGB}{230, 0, 70}
+\setbeamercolor{itemize item}{bg=hereondarkblue, fg=hereondarkblue}
+\setbeamercolor{itemize subitem}{bg=black, fg=black}
+\setbeamercolor{item}{bg=hereondarkblue, fg=hereondarkblue}
+\setbeamertemplate{items}[circle]
+\setbeamercolor{titlepalette}{fg=hereondarkblue}
+\setbeamercolor{titlelike}{parent=titlepalette}
+\setbeamercolor{block title}{fg=hereonblue}
+\setbeamercolor{block title alerted}{fg=hereonred}
+\setbeamerfont{block title}{series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+
+\newcommand{\tabitem}{~~\llap{\textcolor{hereondarkblue}{\Large \textbullet}}~~}
+
+%%% BEAMER BUTTONS %%%
+\setbeamertemplate{button}{\tikz
+	\node[
+	inner xsep=10pt,
+	draw=structure!80,
+	fill=hereongreen,
+	rounded corners=4pt]  {\insertbuttontext};}
+
+\usepackage{etoolbox}
+
+\newcounter{NumSlidesCounter}
+
+\makeatletter
+\apptocmd{\beamer@@frametitle}{\write\@auxout{\string\@writefile{frm}{\string\frametitleentry{\the\c@framenumber}{#1}{#2}}}}{}{}
+\newcommand*{\frametitleentry}[3]{\@namedef{frametitleshort#1}{#2}\@namedef{frametitle#1}{#3}}
+\AtEndDocument{\if@filesw\newwrite\tf@frm\immediate\openout\tf@frm\jobname.frm\relax\fi}
+\@input{\jobname.frm}
+\newcommand*{\insertpreviousframetitle}[1][1]{\bgroup\advance\c@framenumber by -#1\relax\@nameuse{frametitleshort\the\c@framenumber}\egroup}
+\newcommand*{\insertnextframetitle}[1][1]{\bgroup\advance\c@framenumber by #1\relax\@nameuse{frametitleshort\the\c@framenumber}\egroup}
+
+\newcommand{\calcNumSlidesCounter}{%
+	\setcounter{NumSlidesCounter}{\beamer@endpageofframe}%
+	\addtocounter{NumSlidesCounter}{1}%
+	\addtocounter{NumSlidesCounter}{-\beamer@startpageofframe}%
+}
+
+% increase footheight slighly to take care of continuation buttons
+\patchcmd{\beamer@calculateheadfoot}{\advance\footheight by 4pt}{\advance\footheight by 20pt}{}{}
+
+\makeatother
+
+\newcommand{\continuationbuttons}{\slidebuttonsnum{\insertcontinuationcount}}
+
+\newcommand{\slidebuttons}{\slidebuttonsnum{\overlaynumber}}
+
+\newcommand{\slidebuttonsnum}[1]{%
+	{
+		\centering
+		\calcNumSlidesCounter%
+		\ifnum\theNumSlidesCounter>1
+			\ifnum\theNumSlidesCounter>2
+				\hyperlinkframestart{\beamerbutton{\Large $\ll$}}%
+			\fi
+			\hyperlinkslideprev{\beamerbutton{\Large $<$}}
+			{\Large{#1/\theNumSlidesCounter}}
+			\hyperlinkslidenext{\beamerbutton{\Large $>$}}
+			\ifnum\theNumSlidesCounter>2
+				\hyperlinkframeend{\beamerbutton{\Large $\gg$}}%
+			\fi
+		\fi
+	}
+}
+
+\setbeamertemplate{footline}
+{
+	% do not increase the framenumber for frames with allowframebreak,
+	% otherwise the button is not labeled correctly
+	\ifnum\insertcontinuationcount>0 %
+		\ifnum\insertpagenumber>\insertframestartpage
+			\addtocounter{framenumber}{-1}
+		\fi
+		\hspace{0.05\linewidth}\continuationbuttons \\
+	\fi
+	\begin{columns}[c]
+		\begin{column}{0.45\linewidth}
+			\ifthenelse{\insertframenumber<3}{}{%
+				\hyperlinkframeendprev{\beamerbutton{\large $\blacktriangleleft$  \,\truncate{0.8\linewidth}{\insertpreviousframetitle}}}
+			}
+		\end{column}
+		\begin{column}{0.05\linewidth}
+			\begin{tabular}{c}
+
+				\setbeamertemplate{button}{\tikz
+					\node[
+					inner xsep=10pt,
+					draw=structure!80,
+					fill=hereondarkblue,
+					rounded corners=4pt]  {\insertbuttontext};}
+
+				\hyperlink{sec:home}{\beamerbutton{\includegraphics[height=2em]{figures/home.png}}} \\
+				\includegraphics[height=0.8cm]{figures/CreativeCommons_Attribution_License.png}
+			\end{tabular}
+		\end{column}
+		\begin{column}{0.45\linewidth}
+		\hfill%
+		\ifthenelse{\insertframenumber=\inserttotalframenumber}{}{%
+			\hyperlinkframestartnext{\beamerbutton{\large\truncate{0.8\linewidth}{\insertnextframetitle}\, $\blacktriangleright$ }}
+		}
+		\end{column}
+	\end{columns}
+	\vspace{0.2em}
+	\begin{footnotesize}
+		\hspace{0.01\linewidth}
+		\presentationsubtitle \, --
+		\hyperlink{frm:author}{\presentationauthor} \, --
+		\presentationdate
+	\end{footnotesize}
+	\vspace{0.2em}
+}
+
+
+%%% END BUTTONS %%%%
+
+%%% FRAMETITLE %%%%
+
+\setbeamertemplate{frametitle}
+{
+	\nointerlineskip
+	\begin{beamercolorbox}[sep=0.3cm,wd=\paperwidth]{frametitle}
+	\strut{\fontsize{28pt}{30pt}\selectfont \insertframetitle}\strut
+	\hfill
+	\raisebox{-6.0mm}{\hyperlink{sec:authors}{\includegraphics[height=1.5em]{figures/hereon.png}}}
+	\end{beamercolorbox}
+}
+
+%%% END FRAMETITLE %%%%
+
+\makeatletter
+\newcommand*{\overlaynumber}{\number\beamer@slideinframe}
+\newcommand*{\numslides}{\number\beamer@minimum}
+\makeatother
+
+%%%%%%%%%%%%%%%%   HERE IS SOME SPACE FOR YOUR PERSONAL REAMBLES %%%%%%%%%%%%%%%%%%%%
+\usepackage[loop]{animate}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{wrapfig}  % To wrap text around a figure
+\usetikzlibrary{arrows,shapes,tikzmark,fit,positioning,matrix,scopes,chains,overlay-beamer-styles, calc}
+% tikzmark command, for shading over items
+\newcommand{\mytikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+\newcommand{\mydottedline}{\color{blue}\makebox[0pt]{\textbullet}\hskip-0.5pt\vrule width 1pt\hspace{\labelsep}}
+\usepackage{rotating}
+\addtobeamertemplate{block begin}{\setlength\abovedisplayskip{0pt}}
+% \setbeamerfont{itemize/enumerate subbody}{size=\normalsize} %to set the body size
+
+\def\imagetop#1{\vtop{\null\hbox{#1}}}
+
+%%% Presentation informations - FILL IN TITLE, SUBTITLE, etc. %%%
+\newcommand{\presentationtitle}{Model Data Explorer}
+\newcommand{\presentationsubtitle}{ESM Data Exploration with the Model Data Explorer}
+\newcommand{\presentationdate}{April 29th, 2023}
+\newcommand{\location}{EGU, Vienna, Austria}
+\newcommand{\presentationauthor}{Philipp S. Sommer}
+\newcommand{\authoremail}{philipp.sommer@hereon.de}
+
+%\AtBeginSubsection[]{
+%	\begin{frame}
+%		\vfill
+%		\centering
+%		\begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+%			\usebeamerfont{title}\insertsectionhead \\ \insertsubsectionhead\par%
+%		\end{beamercolorbox}
+%		\vfill
+%	\end{frame}
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%% Listings style %%%%%%%%
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+
+\lstdefinestyle{Style1}{ % Define a style for your code snippet, multiple definitions can be made if, for example, you wish to insert multiple code snippets using different programming languages into one document
+	language=bash, % Detects keywords, comments, strings, functions, etc for the language specified
+	backgroundcolor=\color[gray]{0.9}, % Set the background color for the snippet - useful for highlighting
+	basicstyle=\small\ttfamily, % The default font size and style of the code
+	breakatwhitespace=false, % If true, only allows line breaks at white space
+	breaklines=true, % Automatic line breaking (prevents code from protruding outside the box)
+	captionpos=b, % Sets the caption position: b for bottom; t for top
+	commentstyle=\color{DarkGreen}, % Style of comments within the code - dark green courier font
+	deletekeywords={}, % If you want to delete any keywords from the current language separate them by commas
+	%escapeinside={\%}, % This allows you to escape to LaTeX using the character in the bracket
+	firstnumber=1, % Line numbers begin at line 1
+	frame=single, % Frame around the code box, value can be: none, leftline, topline, bottomline, lines, single, shadowbox
+	frameround=tttt, % Rounds the corners of the frame for the top left, top right, bottom left and bottom right positions
+%	keywordstyle=blue, % Functions are bold and blue
+	morekeywords={}, % Add any functions no included by default here separated by commas
+	numbers=left, % Location of line numbers, can take the values of: none, left, right
+	numbersep=10pt, % Distance of line numbers from the code box
+	numberstyle=\tiny\color{gray}, % Style used for line numbers
+	rulecolor=\color{black}, % Frame border color
+	showstringspaces=false, % Don't put marks in string spaces
+	showtabs=false, % Display tabs in the code as lines
+	stepnumber=5, % The step distance between line numbers, i.e. how often will lines be numbered
+	stringstyle=\color{purple}, % Strings are purple
+	tabsize=4, % Number of spaces per tab in the code
+}
+\lstset{style=Style1}
+% Create a command to cleanly insert a snippet with the style above anywhere in the document
+\newcommand{\insertcode}[2]{\begin{itemize}\item[]\lstinputlisting[caption=#2,label=#1,style=Style1]{#1}\end{itemize}} % The first argument is the script location/filename and the second is a caption for the
+
+%%%%%%%% END listings style %%%%%%%%%%5
+
+\title{\presentationtitle}
+\subtitle{\presentationsubtitle}
+\date{\presentationdate}
+\author{\presentationauthor}
+
+\hypersetup{
+    colorlinks,
+	linkcolor={gray!80!black},
+	citecolor={black},
+	urlcolor={gray!80!black},
+	pdfauthor=\presentationauthor,
+	pdfsubject={Model Data Explorer},
+	pdftitle=\presentationtitle - \presentationsubtitle,
+	pdfkeywords={django, model data, FAIR, Earth System Models, Climate Models},
+	pdfstartpage=1
+}
+
+\include{notebook-header}
+
+%%%%%%%%%%%%%%%%%%%   BEGIN OF THE MAIN PART OF THE DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%
+
+%\includeonly{content/example_mapplotters}
+
+\begin{document}
+% For every picture that defines or uses external nodes, you'll have to
+% apply the 'remember picture' style. To avoid some typing, we'll apply
+% the style to all pictures.
+\tikzstyle{every picture}+=[remember picture]
+
+%%%%%%%%%%%%%%%%%%%%%% !! YOUR CONTENT BEGINS HERE !! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%Includes
+%
+\include{content/home}
+\include{content/session-intro}
+\include{content/madness}
+\include{content/authors}
+\include{content/abstract}
+\include{content/core}
+\include{content/plugins}
+\include{content/federation}
+\include{content/maintenance}
+\include{content/resources}
+
+%Appendix
+\appendix
+
+%Bibliography
+\section{Appendix}
+\subsection{References}
+\begin{frame}[allowframebreaks]{References}{}
+
+% \begin{tiny}
+\bibliographystyle{abbrvnat}
+\bibliography{references}
+% \end{tiny}
+\end{frame}
+
+\begin{frame}
+\frametitle[Hereon]{Helmholtz-Zentrum Hereon}
+\label{frm:map}
+\includegraphics[height=0.7\textheight]{figures/hereon-map.png} \rotatebox{90}{\hyperlink{frm:author}{\beamerbutton{Back to author page}}} \\
+Helmholtz Coastal Data Center (HCDC) - Helmholtz-Zentrum Hereon \\
+Max-Planck-Straße 1 - DE - 21502 Geesthacht \\
+\end{frame}
+
+\end{document}

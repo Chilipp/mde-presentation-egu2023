@@ -1,0 +1,93 @@
+% !TeX root = ../mde-presentation.tex
+
+\section{Home} \label{sec:home}
+%%%%%%%%%%%%%%%%   HOME PAGE   %%%%%%%%%%%%%%%%%%
+
+\begin{frame}[t, plain]{}
+
+	\setbeamertemplate{button}{\tikz
+	\node[
+	inner xsep=20pt,
+	inner ysep=10pt,
+	minimum height=5em,
+	draw=structure!80,
+	fill=hereongreen,
+	rounded corners=4pt]  {\insertbuttontext};}
+
+	% title
+	\begin{textblock*}{\linewidth}(0.05\linewidth, 0.05\textheight)
+		\centering
+		{\Large{Modern Earth system science visualization and exploration techniques}} \\ \vspace{1em}
+		\presentationsubtitle \\
+		\vspace{1em}
+		ESSI4.1 | \location \, | \presentationdate
+
+		\begin{columns}
+			\begin{column}{0.5\linewidth}
+				\begin{block}{\center Talk}
+					\centering
+					\vspace{1em}
+					\hyperlink{sec:session-intro}{\beamerbutton{\large Session Intro}} \\
+					\vspace{1em}
+					\hyperlink{sec:madness}{\beamerbutton{\large 2-Minute Madness}}
+				\end{block}
+			\end{column}
+			\begin{column}{0.5\linewidth}
+				\begin{block}{\center General}
+					\centering
+					\vspace{1em}
+					\begin{tabular}{ll}
+						\hyperlink{sec:authors}{\beamerbutton{\large Author}} & \hyperlink{sec:funding}{\beamerbutton{\large Funding}} \\
+					\end{tabular} \\
+					\vspace{1em}
+					\hyperlink{sec:abstract}{\beamerbutton{\large Abstract}}
+				\end{block}
+			\end{column}
+		\end{columns}
+
+		\begin{block}{\center Implementation}
+			\begin{center}
+				\hspace{2.5em}
+				\hyperlink{sec:core}{\beamerbutton{\large Core}} \quad
+				\hyperlink{sec:plugins}{\beamerbutton{\large Plugins}} \quad
+				\hyperlink{sec:federation}{\beamerbutton{\large Federation}} \\
+
+				\vspace{1em}
+
+				\hyperlink{sec:maintenance}{\beamerbutton{\large Maintenance}} \quad
+				\hyperlink{sec:resources}{\beamerbutton{\large Resources}}
+			\end{center}
+		\end{block}
+	\end{textblock*}
+
+	\begin{textblock*}{0.4\textwidth}(0.05\textwidth,0.94\textheight)
+		\href{https://github.com/Chilipp/mde-presentation-egu2023}{
+			\includegraphics[width=4cm]{figures/qrcode-presentation.png}
+		} \\
+		\href{https://doi.org/10.5194/egusphere-egu23-3624}{
+			\includegraphics[width=\textwidth]{figures/doi.pdf}
+		}
+	\end{textblock*}
+
+	\begin{textblock*}{6cm}(0.8\textwidth,1.05\textheight)
+		\raggedleft
+		\hyperlink{frm:map}{\includegraphics[width=6cm]{figures/hereon.png}} \\
+		\includegraphics[height=0.8cm]{figures/CreativeCommons_Attribution_License.png}
+	\end{textblock*}
+
+\end{frame}
+
+\section{Help} \label{sec:help}
+
+\begin{frame}
+	\frametitle[Help]{How to navigate}
+	This presentation has been prepared for a PICO presentation at the EGU 2023 in Vienna, Austria. To facilitate the navigation, a lot of hyperlinks are used. Almost every item in this presentation is clickable:
+	\begin{itemize}
+		\item click \beamerbutton{buttons like this} to be linked to other connected frames
+		\item click the navigation bar above with the sections, \hyperlink{sec:home}{Home}, \hyperlink{sec:help}{Help}, etc. (including the dots) to navigate in the presentation
+		\item click on navigation buttons like this \slidebuttons to show you more of the current frame. \only<2>{\textcolor{red}{For example this text.}}
+		\item click on many of the images to get more information or a close-up
+		\item click the \hyperlink{sec:home}{\beamerbutton{\includegraphics[height=0.8cm]{figures/home.png}}} icon to go back to the menu
+		\item click the buttons at the lower left and lower right that bring you to the next slide
+	\end{itemize}
+\end{frame}
