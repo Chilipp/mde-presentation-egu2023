@@ -80,6 +80,7 @@ contact:
 title: "ESM Data Exploration with the Model Data Explorer"
 license: "CC-BY-4.0"
 repository-code: https://github.com/Chilipp/mde-presentation-egu2023
+doi: 10.5281/zenodo.7870280
 version: 1.0.0
 date-released: 2023-04-27
 keywords:

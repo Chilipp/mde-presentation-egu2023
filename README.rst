@@ -6,6 +6,10 @@ PICO presentation of the Model Data Explorer for EGU 2023
     :alt: DOI
     :target: https://doi.org/10.5194/egusphere-egu23-3624
 
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.7870280.svg
+    :alt: Zenodo
+    :target: https://doi.org/10.5281/zenodo.7870280
+
 This repository contains the presentation files for the PICO presentation of
 the model data explorer and a session introduction at the EGU in Vienna,
 April 29th, 2023
