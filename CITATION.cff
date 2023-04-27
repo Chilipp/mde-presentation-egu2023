@@ -4,7 +4,7 @@ cff-version: 1.2.0
 message: <-
   Please cite both the article from preferred-citation and the upload on
   zenodo.
-authors: &authors
+authors:
   - family-names: Sommer
     given-names: "Philipp S."
     affiliation: "Helmholtz-Zentrum Hereon"
@@ -130,7 +130,76 @@ abstract: |
 
 preferred-citation:
   title: "ESM Data Exploration with the Model Data Explorer"
-  authors: *authors
+  authors:
+  - family-names: Sommer
+    given-names: "Philipp S."
+    affiliation: "Helmholtz-Zentrum Hereon"
+    orcid: "https://orcid.org/0000-0001-6171-7716"
+    website: "https://www.philipp-s-sommer.de"
+    post-code: 21502
+    city: Geesthacht
+    country: DE
+    email: philipp.sommer@hereon.de
+  - family-names: Baldewein
+    given-names: Linda
+    affiliation: Helmholtz-Zentrum Hereon
+    post-code: 21502
+    city: Geesthacht
+    country: DE
+    orcid: "https://orcid.org/0000-0002-9477-516X"
+  - family-names: Takyar
+    given-names: Hatef
+    affiliation: Helmholtz-Zentrum Hereon
+    post-code: 21502
+    city: Geesthacht
+    country: DE
+  - family-names: Chaudhary
+    given-names: Rehan
+    affiliation: Helmholtz-Zentrum Hereon
+    post-code: 21502
+    city: Geesthacht
+    country: DE
+  - family-names: Hadizadeh
+    given-names: Mostafa
+    affiliation: Karlsruhe Institute of Technology
+    country: DE
+    orcid: "https://orcid.org/0000-0003-2847-6003"
+  - family-names: Dibeh
+    given-names: Housam
+    affiliation: Helmholtz-Zentrum Hereon
+    post-code: 21502
+    city: Geesthacht
+    country: DE
+  - family-names: Böcke
+    given-names: Max
+    affiliation: Helmholtz-Zentrum Hereon
+    post-code: 21502
+    city: Geesthacht
+    country: DE
+  - family-names: Lorenz
+    given-names: Christof
+    affiliation: Karlsruhe Institute of Technology
+    country: DE
+    orcid: "https://orcid.org/0000-0001-5590-5470"
+  - family-names: Dinter
+    given-names: Tilman
+    affiliation: Alfred Wegener Institute
+    country: DE
+  - family-names: Pinkernell
+    given-names: Stefan
+    affiliation: Alfred Wegener Institute
+    country: DE
+  - family-names: Getzlaff
+    given-names: Klaus
+    affiliation: GEOMAR Helmholtz-Zentrum für Ozeanforschung
+    country: DE
+    orcid: "https://orcid.org/0000-0002-0347-7838"
+  - family-names: Kleeberg
+    given-names: Ulrike
+    affiliation: Helmholtz-Zentrum Hereon
+    post-code: 21502
+    city: Geesthacht
+    country: DE
   year: 2023
   type: article
   doi: "10.5194/egusphere-egu23-3624"
